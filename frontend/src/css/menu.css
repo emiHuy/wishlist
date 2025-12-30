@@ -1,0 +1,19 @@
+.menu {
+    border: solid 1px black;
+    position: absolute;
+    width: 65px;
+    translate: 380px -20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu button {
+    width: 100%;
+    border: none;
+    text-align: left;
+    padding: 2px 5px;
+}
+
+.menu button:hover {
+    background-color: rgb(210, 210, 210);
+}

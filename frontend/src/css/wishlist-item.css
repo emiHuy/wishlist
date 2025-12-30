@@ -1,0 +1,58 @@
+.wishlist-item {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    display: flex;
+    flex-direction: row;
+    padding: 10px 12px;
+    margin: 0;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    justify-content: space-between;
+    position: relative;
+    width: 400px;
+}
+
+.operations {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    align-items: end;
+}
+
+.operations button {
+    border: none;
+    background: none;
+}
+
+a {
+    text-align: right;
+}
+
+.item {
+    display: flex;
+    gap: 10px;
+}
+
+.title {
+    padding: 0;
+    margin: 0;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.price {
+    padding: 0;
+    margin: 0;
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding-top: 10px;
+}
+
+.description {
+    padding: 0;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.checkbox {
+    transform: scale(1.5);
+}

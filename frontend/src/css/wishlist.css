@@ -1,0 +1,9 @@
+.wishlist {
+    width: 40vw;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 50px;
+    align-items: center;
+}

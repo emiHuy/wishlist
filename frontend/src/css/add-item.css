@@ -1,0 +1,81 @@
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 5px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.expandable-title {
+    display: flex;
+    justify-content: center;
+}
+
+.expandable-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    padding: 0;
+}
+
+.expandable-content input {
+    padding: 0 10px;
+    opacity: 0.5;
+}
+
+form input {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1rem;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    padding: 5px 10px;
+    width: 200px;
+}
+
+form:focus-within .expandable-content {
+    row-gap: 10px;
+    height: auto;
+    width: auto;
+    padding: 5px 0 10px 0;
+    transition: all .5s ease;
+}
+
+form:focus-within .expandable-content input {
+    padding: 5px 10px;
+    opacity: 1;
+    transition: all .5s ease;
+}
+
+form:not(:hover) .expandable-content {
+    height: 0;
+    width: 0;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    padding: 0;
+}
+
+form:not(:hover) .expandable-content input {
+    padding: 0 10px;
+    opacity: 0.5;
+    transition: all .5s ease;
+}
+
+.url-price {
+    display: flex;
+    gap: 5px;
+    width: 200px;
+}
+
+#url {
+    width: 100px;
+}
+
+#price {
+    width: 75px;
+}
