@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { getWishlist } from "../../api/wishlist";
+import { getWishlist } from "../../../api/wishlist.js"
 import WishlistItem from "./WishlistItem";
 import Editor from "./Editor"
 
-import '../../css/wishlist.css';
+import '../../../css/wishlist.css';
 
 export default function Wishlist() {
   const [items, setItems] = useState([]);

@@ -1,6 +1,6 @@
-import "../../css/menu.css"
+import "../../../css/menu.css"
 import { useEffect, useRef } from "react";
-import { deleteWishlistItem } from "../../api/wishlist";
+import { deleteWishlistItem } from "../../../api/wishlist";
 
 export default function Menu({item, onEdit, isVisible, onClose, refresh}) {
     const deleteItem = async (id) => {

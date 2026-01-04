@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
-import { createWishlistItem } from "../../api/wishlist";
-import '../../css/add-item.css';
+import { createWishlistItem } from "../../../api/wishlist";
+import '../../../css/add-item.css';
 
 export default function AddItem({ refresh }) {
   const [title, setTitle] = useState("");

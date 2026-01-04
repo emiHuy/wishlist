@@ -1,6 +1,6 @@
-import "../../css/editor.css";
+import "../../../css/editor.css";
 import { useState, useEffect } from 'react';
-import { updateWishlistItem } from "../../api/wishlist";
+import { updateWishlistItem } from "../../../api/wishlist";
 
 export default function Editor({item, onClose, refresh}) {
     const [title, setTitle] = useState('');

@@ -1,6 +1,6 @@
-import "../../css/wishlist-item.css";
+import "../../../css/wishlist-item.css";
 import { useState } from "react";
-import { deleteWishlistItem } from "../../api/wishlist";
+import { deleteWishlistItem } from "../../../api/wishlist";
 import Menu from "./Menu";
 
 function WishlistItem({item, edit, refresh}) {
