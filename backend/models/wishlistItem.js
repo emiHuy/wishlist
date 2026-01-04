@@ -1,15 +1,17 @@
 /**
- * wishlistModel.js
+ * wishlistItem.js
  * 
  * Defines the Mongoose schema and model for Wishlist items.
  * Each item includes a title, description, price, and URL.
  * Timestamps (createdAt, updatedAt) are automatically added.
  */
 
+// define user in wishlist item
+
 const mongoose = require('mongoose')
 
 // Define schema for wishlist item.
-const wishlistSchema = new mongoose.Schema({
+const WishlistItemSchema = new mongoose.Schema({
     // Title of item (required).
     title: {
         type: String, 
@@ -33,4 +35,4 @@ const wishlistSchema = new mongoose.Schema({
 }, {timestamps: true});
 
 // Export modell for use in other parts of backend.
-module.exports = mongoose.model('WishlistItem', wishlistSchema)
+module.exports = mongoose.model('WishlistItem', WishlistItemSchema)
