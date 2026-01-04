@@ -33,7 +33,6 @@ function AddItem({ refresh }) {
     setPrice('');
     setDescription('');
     setURL('');
-    setExpanded(false);
   };
 
   return (
