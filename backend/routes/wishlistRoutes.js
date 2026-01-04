@@ -22,7 +22,7 @@
 
 const express = require('express');
 router = express.Router();
-const WishlistItem = require('../models/wishlistModel');
+const WishlistItem = require('../models/WishlistItem');
 
 /**
  * POST /wishlist
