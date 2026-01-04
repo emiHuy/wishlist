@@ -1,13 +1,16 @@
-import "../../../css/editor.css";
 import { useState, useEffect } from 'react';
-import { updateWishlistItem } from "../../../api/wishlist";
+import { updateWishlistItem } from '../../../api/wishlist';
+import '../../../css/wishlist-item-editor.css';
 
-export default function Editor({item, onClose, refresh}) {
+// Component for editing a wishlist item.
+function WishlistItemEditor({item, onClose, refresh}) {
+    // Local state for input fields.
     const [title, setTitle] = useState('');
     const [price, setPrice] = useState('');
     const [description, setDescription] = useState('');
     const [url, setURL] = useState('');
 
+    // Initialize form fields when an item is being edited.
     useEffect(() => {
         if (!item) return;
             setTitle(item.title || '');
@@ -16,17 +19,22 @@ export default function Editor({item, onClose, refresh}) {
             setURL(item.url ?? '');
     }, [item]);
 
+    // Do not render editor if no item is selected.
     if (item == null) return null;
 
+    // Handle updating the item.
     const updateItem = async () => {
         try {
+            // Send updated data to server.
             await updateWishlistItem(item._id, { title, price, description, url });
+            // Close and refresh wishlist.
             onClose();
             refresh();
-            setTitle("");
-            setPrice("");
-            setDescription("");
-            setURL("");
+            // Reset local state for next edit.
+            setTitle('');
+            setPrice('');
+            setDescription('');
+            setURL('');
         } catch (err) {
             console.error('Update failed:', err);
         }
@@ -64,3 +72,5 @@ export default function Editor({item, onClose, refresh}) {
         </div>
     )
 }
+
+export default WishlistItemEditor;

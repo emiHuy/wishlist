@@ -1,14 +1,17 @@
-import { useEffect, useState } from "react";
-import { getWishlist } from "../../../api/wishlist.js"
-import WishlistItem from "./WishlistItem";
-import Editor from "./Editor"
-
+import { useEffect, useState } from 'react';
+import { getWishlist } from '../../../api/wishlist.js'
+import WishlistItem from './WishlistItem';
+import WishlistItemEditor from './WishlistItemEditor.jsx'
 import '../../../css/wishlist.css';
 
-export default function Wishlist() {
+// Component for displaying the entire wishlist.
+function Wishlist() {
+  // Stores all wishlist items fetched from API.
   const [items, setItems] = useState([]);
+  // Stores item currently being edited (null if none).
   const [itemToEdit, setItemToEdit] = useState(null);
 
+  // Fetch wishlist items from server and update store.
   const loadItems = async () => {
     try {
       const data = await getWishlist();
@@ -18,13 +21,14 @@ export default function Wishlist() {
     }
   };
 
+  // Load wishlist items when the component mounts.
   useEffect(() => {
     loadItems();
   }, []);
 
   return (
     <div className="wishlist">
-      <Editor item={itemToEdit}  onClose={() => setItemToEdit(null)} refresh={loadItems}></Editor>
+      <WishlistItemEditor item={itemToEdit}  onClose={() => setItemToEdit(null)} refresh={loadItems}></WishlistItemEditor>
       {items.length === 0 ? (
         <p>No items yet</p>
       ) : (
@@ -40,3 +44,5 @@ export default function Wishlist() {
     </div>
   );
 }
+
+export default Wishlist;

@@ -1,28 +1,38 @@
-import { useState, useRef } from "react";
-import { createWishlistItem } from "../../../api/wishlist";
+import { useState, useRef } from 'react';
+import { createWishlistItem } from '../../../api/wishlist';
 import '../../../css/add-item.css';
 
-export default function AddItem({ refresh }) {
-  const [title, setTitle] = useState("");
-  const [price, setPrice] = useState("");
-  const [description, setDescription] = useState("");
-  const [url, setURL] = useState("");
+// Component for adding a new item to a wishlist.
+function AddItem({ refresh }) {
+  // Local state for each input field.
+  const [title, setTitle] = useState('');
+  const [price, setPrice] = useState('');
+  const [description, setDescription] = useState('');
+  const [url, setURL] = useState('');
 
+  // REference to the form to control focus.
   const inputRef = useRef(null);
 
+  // Handles form submission.
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // Prevent submission if title is empty.
     if (!title) return;
+
+    // Send new item to backend.
     await createWishlistItem( { title, price, description, url })
+    // Refresh wishlist.
     refresh(); 
     
+    // Remove focus from form for UX.
     if (inputRef.current) {
       inputRef.current.blur();
     }
-    setTitle("");
-    setPrice("");
-    setDescription("");
-    setURL("");
+    // Reset form fields after submission.
+    setTitle('');
+    setPrice('');
+    setDescription('');
+    setURL('');
     setExpanded(false);
   };
 
@@ -65,3 +75,5 @@ export default function AddItem({ refresh }) {
     </form>
   );
 }
+
+export default AddItem;
