@@ -6,12 +6,17 @@
  * Timestamps (createdAt, updatedAt) are automatically added.
  */
 
-// define user in wishlist item
 
 const mongoose = require('mongoose')
 
 // Define schema for wishlist item.
 const WishlistItemSchema = new mongoose.Schema({
+    // User
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User', // Reference user model.
+        required: true,
+    },
     // Title of item (required).
     title: {
         type: String, 
@@ -34,5 +39,5 @@ const WishlistItemSchema = new mongoose.Schema({
     }    
 }, {timestamps: true});
 
-// Export modell for use in other parts of backend.
+// Export model for use in other parts of backend.
 module.exports = mongoose.model('WishlistItem', WishlistItemSchema)
