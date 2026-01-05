@@ -5,26 +5,8 @@
  * Includes functions to fetch, create, update, and delete wishlist items.
  */
 
+import { request, getAuthHeaders } from './utils';
 const BASE_URL = 'http://localhost:5000/wishlist';
-
-/**
- * Helper function to make API requests.
- * @param {string} url - URL to request. 
- * @param {object} options - Fetch options (method, headers, body, etc.).
- * @returns {Promise<any|null>} - Parsed JSON data or null for empty responses.
- * @throws {Error} - Throws if response status is not ok.
- */
-async function request(url, options={}) {
-    const res = await fetch(url, options);
-    if (!res.ok) {
-        const errorMessage = await res.text();
-        throw new Error(`Request failed: ${res.status} ${errorMessage}`);
-    }
-    if (res.status !== 204) { // 204 => no content
-        return res.json();
-    }
-    return null;
-}
 
 /**
  * Fetch all wishlist items from backend.
@@ -32,7 +14,7 @@ async function request(url, options={}) {
  * @throws {Error} - Throws if request fails.
  */
 async function getWishlist() {
-    return request(BASE_URL);
+    return request(BASE_URL, { headers: getAuthHeaders(false) });
 }
 
 /**
@@ -44,8 +26,8 @@ async function getWishlist() {
 async function createWishlistItem(data) {
     return request((BASE_URL), {
         method: 'POST', 
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        headers: getAuthHeaders(true),
+        body: JSON.stringify(data)
     }); 
 }
 
@@ -53,14 +35,14 @@ async function createWishlistItem(data) {
  * Update existing wishlist item.
  * @param {string|number} id - ID of wishlist item to update.
  * @param {Object} data - Updated data for wishlist item.
- * @returns {Promis<Object>} - Updated wishlist item.
+ * @returns {Promise<Object>} - Updated wishlist item.
  * @throws {Error} - Throws if request fails.
  */
 async function updateWishlistItem(id, data) {
     return request(`${BASE_URL}/${id}`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        headers: getAuthHeaders(true),
+        body: JSON.stringify(data)
     });
 }
 
@@ -73,6 +55,7 @@ async function updateWishlistItem(id, data) {
 async function deleteWishlistItem(id) {
     return request(`${BASE_URL}/${id}`, {
         method: 'DELETE',
+        headers: getAuthHeaders(false)
     });
 }
 
