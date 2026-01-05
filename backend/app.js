@@ -10,6 +10,7 @@ const cors = require('cors');
 
 const app = express();
 const wishlistRoutes = require('./routes/wishlistRoutes')
+const userRoutes = require('./routes/userRoutes');
 
 /**
  * Enable CORS for all origins.
@@ -29,5 +30,7 @@ app.use(express.json());
  * Example: GET /wishlist, POST /wishlist, etc.
  */
 app.use('/wishlist', wishlistRoutes);
+
+app.use('/auth', userRoutes);
 
 module.exports = app;
