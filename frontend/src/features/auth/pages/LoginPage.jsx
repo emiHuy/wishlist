@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../../../api/auth';
+import '../../../css/auth.css';
 
 export default function LoginPage() {
     const [email, setEmail] = useState('');
@@ -28,8 +29,9 @@ export default function LoginPage() {
     }
 
     return (
-        <div className="signup-page">
-            <form className="signup-form" onSubmit={handleSubmit}>
+        <div className="auth-container">
+            <h1>Login</h1>
+            <form className="auth-form" onSubmit={handleSubmit}>
                 <input
                     type="email"
                     placeholder="Email"
@@ -46,7 +48,7 @@ export default function LoginPage() {
                 />
                 <button type='submit'>Login</button>
             </form>
-            <Link to="/signup">Link to Signup</Link>
+            <p>Don't have an account? <Link to="/signup">Signup</Link></p>
         </div>
     )
 }
